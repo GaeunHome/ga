@@ -1,22 +1,47 @@
-# Genetic Algorithm
-<h3>Problem definition</h3>
-<p>
-In a class, the professor assigns students to work on group presentations. Each group consists of M students, and the presentation requires completing N different tasks. Each task has a varying time requirement—some tasks take longer to complete, while others are relatively simple. Additionally, each student has different strengths for various tasks; some are skilled in writing reports, while others excel in creating slides or delivering presentations.<br>
-The professorʼs objectives are:<br>
-1. <b>Every student must be assigned at least one task</b>, ensuring that all members contribute to the preparation process.<br>
-2. <b>Assign each task to the most suitable student</b>, minimizing the overall time required for the group to complete the entire project.
-</p>
+# Genetic Algorithm（基因演算法）
+### 問題定義
 
-# Example
-<p>
-In a course on Charisma Studies, Shinny and Jack are team members grouped according to their MBTI types, both being ENTJs. ENTJs are natural-born leaders who exude charisma and confidence, projecting an aura of authority and rallying people toward a common goal. For their final project on Charisma Studies, they plan to demonstrate how to confidently approach strangers without creating an awkward situation. Therefore, they have divided the work into three tasks: approaching strangers, filming and editing the video, and creating the report.
-Shinny, being lively and outgoing, is not afraid to approach strangers, so it only takes her 3 hours to complete this task. Jack, on the other hand, is a bit shy and reserved, needing 5 hours for the same task. However, Jack has a passion for photography and can efficiently handle filming and editing in just 2 hours, while Shinny, in contrast, would need 8 hours. When it comes to creating the report, Shinny is more adept and can produce a high-quality report in just 6 hours, which is 1 hour less than Jack would need to complete the same task.
-</p>
-<h3>Solution</h3>
-<p>According to the problem statement, there are a total of two students and three tasks. Each student requires different amounts of time to complete each task.
-Therefore, it can be represented as follows:<br>
-<img width="442" alt="截圖 2025-01-06 下午4 11 11" src="https://github.com/user-attachments/assets/9d4683f2-9b7b-42cf-866a-28bea0840a1a" /><br>
-After calculating using the genetic algorithm, the following results were obtained:<br>
-<img width="442" alt="截圖 2025-01-06 下午4 11 49" src="https://github.com/user-attachments/assets/4d10e161-27b1-4a36-8329-8316d00874fb" /><br>
-This indicates that assigning Shinny to approach strangers and create the report, while Jack handles filming and editing, can minimize the total time required, completing all tasks in just 11 hours! This also illustrates the saying, "the capable should take on more responsibility."
-</p>
+在一個班級中，教授安排學生進行小組報告。每個小組由 M 名學生組成，報告需要完成 N 項不同的任務。每項任務的時間需求不同，有些任務需要較長時間，而有些則相對簡單。此外，每個學生在不同的任務上有不同的專長；有的學生擅長寫報告，有的則擅長製作簡報或進行演講。
+
+教授的目標是：
+1. **每位學生必須至少分配到一項任務**，以確保所有小組成員都有參與準備工作。
+2. **將每項任務分配給最合適的學生**，以最小化完成整個報告所需的總時間。
+
+# 範例
+
+在一門名為《魅力學》的課程中，Shinny 和 Jack 這對小組成員根據他們的 MBTI 類型被分配到了一起，他們都是 ENTJ 類型。ENTJ 是天生的領袖，擁有自信和魅力，散發著權威的氣息，能夠將人們凝聚在一起，朝著共同的目標邁進。為了完成《魅力學》課程的最終專案，他們計劃展示如何自信地接近陌生人而不會造成尷尬。因此，他們將工作分為三個任務：接近陌生人、拍攝與剪輯影片，以及撰寫報告。
+
+Shinny 性格外向、活潑，對接近陌生人毫不畏懼，因此她只需要 3 小時就能完成這項任務。而 Jack 則相對較為內向和羞澀，完成同樣的任務需要 5 小時。然而，Jack 熱愛攝影，能夠高效地完成拍攝與剪輯，只需 2 小時，而 Shinny 則需要 8 小時。至於撰寫報告，Shinny 比較擅長此項工作，能夠在 6 小時內完成高品質的報告，比 Jack 少花 1 小時。
+
+### 解決方案
+
+根據問題描述，共有兩名學生和三個任務。每名學生完成每個任務所需的時間不同。因此，可以將此情況表示如下：
+
+### 成本矩陣
+
+以下是學生和任務的時間需求：
+
+| 任務/學生 | Shinny | Jack |
+|-----------|--------|------|
+| 任務 1    | 3      | 5    |
+| 任務 2    | 8      | 2    |
+| 任務 3    | 6      | 7    |
+
+矩陣形式如下：
+
+```python
+m = 2, n = 3
+# matrix format example
+# task   1  2  3
+cost = [[3, 8, 6],  # Shinny
+        [5, 2, 7]]  # Jack
+```
+
+經過基因演算法計算，得到以下結果：
+
+```python
+total_time = 11
+answer = [1, 2, 1]
+```
+
+這表明，將 Shinny 分配到接近陌生人和撰寫報告的任務，而讓 Jack 負責拍攝與剪輯，可以將完成所有任務所需的總時間最小化，僅需 11 小時！這也印證了「能者多勞」的道理。
